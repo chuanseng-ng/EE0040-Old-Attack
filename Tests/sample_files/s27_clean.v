@@ -1,0 +1,22 @@
+module s27(GND,VDD,CK,G0,G1,G17,G2,G3);
+input CLK,G0,G1,G2,G3;
+output G17;
+
+  wire G5,G10,G6,G11,G7,G13,G14,G8,G15,G12,G16,G9;
+
+  HS65_LH_AND2X4 AND2_0 (.Z(G8), .A(G14), .B(G6) );
+  HS65_LH_OR2X4 OR2_0 (.Z(G15), .A(G12), .B(G8) );
+  HS65_LH_OR2X4 OR2_1 (.Z(G16), .A(G3), .B(G8) );
+  HS65_LH_NAND2X2 NAND2_0 (.Z(G9), .A(G16), .B(G15) );
+  HS65_LH_NOR2X2 NOR2_0 (.Z(G10), .A(G14), .B(G11) );
+  HS65_LH_NOR2X2 NOR2_1 (.Z(G11), .A(G5), .B(G9) );
+  HS65_LH_NOR2X2 NOR2_2 (.Z(G12), .A(G1), .B(G7) );
+  HS65_LH_NOR2X2 NOR2_3 (.Z(G13), .A(G2), .B(G12) );
+  HS65_LH_IVX2 NOT_0 (.Z(G14), .A(G0) );
+  HS65_LH_IVX2 NOT_1 (.Z(G17), .A(G11) );
+  HS65_LH_DFPRQX4 DFF_0 (.D(G10), .CP(CLK), .RN(a), .Q(G5) );
+  HS65_LH_DFPRQX4 DFF_1 (.D(G11), .CP(CLK), .RN(a), .Q(G6) );
+  HS65_LH_DFPRQX4 DFF_2 (.D(G13), .CP(CLK), .RN(a), .Q(G7) );
+
+
+endmodule
