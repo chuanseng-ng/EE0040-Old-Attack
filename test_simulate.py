@@ -2,7 +2,7 @@ import Simulator
 import os
 
 def test(file_name):
-    folder_path = os.path.join(os.getcwd(), 'Tests\\sample_files')
+    folder_path = os.path.join(os.getcwd(), 'Tests')
     file_path = os.path.join(folder_path, file_name)
     reader = Simulator.Reader()
     input_list, output_list, wire_list, logic_gate, flip_flop = reader.extract(file_path)

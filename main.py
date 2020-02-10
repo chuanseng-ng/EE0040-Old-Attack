@@ -7,7 +7,7 @@ import time
 
 start = time.time()
 
-folder_path = os.path.join(os.getcwd(), 'Simulator\\Original Netlist\\Sample')
+folder_path = os.path.join(os.getcwd(), 'Netlist')
 
 # corrupt_list = Camouflage.corrupt(simulator)
 # print('\n', corrupt_list)
