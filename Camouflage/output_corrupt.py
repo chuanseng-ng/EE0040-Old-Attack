@@ -16,25 +16,26 @@ def corrupt(simulator):
         for j in range(len(simulator.input_list[0])):
             simulator.input_list[1][j] = 0
 
-        modified_logic[i][0] = gate_change(modified_logic[i][0])
+        if "_IV" not in modified_logic[i][0]:
+            modified_logic[i][0] = gate_change(modified_logic[i][0])
 
-        # Change logic
-        # a = deepcopy(simulator.logic_gate)
-        simulator.logic_gate = modified_logic
-        # assert a == simulator.logic_gate
+            # Change logic
+            # a = deepcopy(simulator.logic_gate)
+            simulator.logic_gate = modified_logic
+            # assert a == simulator.logic_gate
 
-        print('Camouflaged gate name: ', original_logic[count][1])
-        count += 1
+            print('Camouflaged gate name: ', original_logic[count][1])
+            count += 1
 
-        simulation_result = simulator.simulate()
-        modified_result = simulation_result
-        # print(modified_result)
+            simulation_result = simulator.simulate()
+            modified_result = simulation_result
+            # print(modified_result)
 
-        # Revert logic
-        modified_logic[i][0] = gate_change(modified_logic[i][0])
-        simulator.logic_gate = modified_logic
+            # Revert logic
+            modified_logic[i][0] = gate_change(modified_logic[i][0])
+            simulator.logic_gate = modified_logic
 
-        corrupt_list.append(_output_corrupt(original_result, modified_result))
+            corrupt_list.append(_output_corrupt(original_result, modified_result))
 
         # print('\n')
         '''for w in range(len(modified_result)):
